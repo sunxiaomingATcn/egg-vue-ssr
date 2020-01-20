@@ -3,7 +3,7 @@
 ## 基于egg-vue-webpack-boilerplate 骨架增加了 http service
 
 
-### config/config.default.js 中添加对应代理， 此种使用适用于对应唯一服务；
+### 一、config/config.default.js 中添加对应代理， 此种使用适用于对应唯一服务；
 ```js
   exports.httpProxy = {
     'local':"http://dev1.xxx.com",
@@ -15,7 +15,7 @@
 httpProxy对象 key 为对应启动环境，value为环境对应接口域名, 注意一定要添加 prod 环境。具体环境配置参考 https://www.yuque.com/easy-team/egg-vue/online
 ```
 
-### 客户端获取数据
+### 二、客户端获取数据
 #### 方法1：添加对应接口用于前端页面调用
 controller/api.js 中添加对应方法用于获取服务端数据
 ```js
@@ -54,11 +54,10 @@ async Index() {
 }
 ```
 
-### package.json 中使用对应命令启动
+### 三、package.json 中使用对应命令启动
 ```js
-    "build:dev1": "cross-env easy clean && easy build test"
-    "start:dev1": "egg-scripts start --env=dev1"
-    
+"build:dev1": "cross-env easy clean && easy build test"
+"start:dev1": "egg-scripts start --env=dev1"  
  ```
 启动本地环境：
 

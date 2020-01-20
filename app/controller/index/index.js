@@ -4,7 +4,6 @@ module.exports = class IndexController extends egg.Controller {
   
   async ssr() {
     const result = this.service.article.getArtilceList();
-    this.service.http.request()
     await this.ctx.render('index/index.js', result);
   }
 
