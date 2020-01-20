@@ -1,3 +1,3 @@
 module.exports = app => {
-    app.get('/api/wxconfig',app.controller.api.wxConfig);
+    app.get('/api/articleList',app.controller.api.articleList);
 };

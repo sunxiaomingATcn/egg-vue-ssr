@@ -2,7 +2,7 @@
  * service.base.request
  */
 module.exports = app => {
-    return class BaseService extends app.Service {
+    return class HttpService extends app.Service {
         async request(url = "", params = {}) {
             const {env, httpProxy} = this.app.config;
             if(!httpProxy || !httpProxy[env]){

@@ -1,9 +1,9 @@
 # Egg Vue SSR/CSR
 
-## 基于egg-vue-webpack-boilerplate 骨架增加了 http service 用于获取第三方服务端数据
+### 基于egg-vue-webpack-boilerplate 骨架增加了 http service 用于获取第三方服务端数据
 
 
-### 一、config/config.default.js 中添加对应代理（暂时只对应一种服务）；
+### 一、config/config.default.js 中添加对应代理（暂时只对应一个第三方服务）；
 ```js
   exports.httpProxy = {
     'local':"http://dev1.xxx.com",
@@ -12,21 +12,29 @@
     ...
   }
     /**
-    * httpProxy对象 key 为对应启动环境，value为环境对应接口域名, 注意一定要添加 prod 环境。
+    * httpProxy对象中 key 为对应启动环境，value为环境对应接口域名, 注意一定要添加 prod 环境。
     * 具体环境配置参考 https://www.yuque.com/easy-team/egg-vue/online
     */
 ```
 
 ### 二、客户端获取数据
-#### 方法1：添加对应接口用于前端页面调用
+
+#### 方法1：服务端渲染 Node 层直接获取数据（推荐）
+在负责 render 的 controller 中 获取数据返回到页面
+```js
+async Index() {
+    const result = this.service.http.request('/api/wechat/js/config', {});
+    await this.ctx.render('index/index.js', result);
+}
+```
+#### 方法2：添加对应接口用于前端页面调用
 controller/api.js 中添加对应方法用于获取服务端数据
 ```js
     module.exports = app => {
         return class ApiController extends app.Controller {
-            async wxConfig() {
+            async articleList() {
                 const {ctx, service} = this;
-                const page = ctx.query.page;
-                this.ctx.body = await service.http.request('/api/wechat/js/config?page=' + page);
+                this.ctx.body = await service.http.request('/api/articleList?pageNum=1&pageSize=30');
             }
         };
     };
@@ -38,8 +46,12 @@ controller/api.js 中添加对应方法用于获取服务端数据
 router/api.js 添加接口路由
 ```js
 module.exports = app => {
-    app.get('/api/wxconfig',app.controller.api.wxConfig);
+    app.get('/api/articleList',app.controller.api.articleList);
+    ...
 };
+/**
+* 只使用 Node 层直接获取数据时上述两个文件可以删除，对应的router.js 接口路由组配置require('./router/api')(app)删掉；
+*/
 ```
 vue模板调用接口
 ```js
@@ -50,16 +62,8 @@ export default{
 }
 ```
 
-#### 方法2：服务端渲染 Node 层直接获取数据
-在负责 render 的 controller 中 获取数据返回到页面
-```js
-async Index() {
-    const result = this.service.http.request('/api/wechat/js/config', {});
-    await this.ctx.render('index/index.js', result);
-}
-```
 
-### 三、package.json 中使用对应命令启动
+### 三、package.json 中添加对应环境参数的（--env）启动命令
 ```js
 "build:dev1": "cross-env easy clean && easy build test"
 "start:dev1": "egg-scripts start --env=dev1"  
@@ -68,13 +72,13 @@ async Index() {
 
     npm run dev
     
-启动测试环境：
+启动服务器环境-测试环境：
     
     npm run build:dev1
     
     npm run start:dev1
 
-启动正式环境：
+启动服务器环境-正式环境：
     
     npm run build
     
