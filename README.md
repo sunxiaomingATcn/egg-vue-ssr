@@ -3,7 +3,7 @@
 ## 基于egg-vue-webpack-boilerplate 骨架增加了 http service 用于获取第三方服务端数据
 
 
-### 一、config/config.default.js 中添加对应代理（暂时只对应一种服务）；
+### 一、config/config.default.js 中添加对应代理（暂时只对应一个第三方服务）；
 ```js
   exports.httpProxy = {
     'local':"http://dev1.xxx.com",
