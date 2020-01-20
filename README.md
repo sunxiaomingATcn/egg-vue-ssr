@@ -15,25 +15,22 @@
 httpProxy对象 key 为对应启动环境，value为环境对应接口域名, 注意一定要添加 prod 环境。具体环境配置参考 https://www.yuque.com/easy-team/egg-vue/online
 ```
 
-
-### controller/api.js 中添加对应方法用于获取服务端数据
+### 客户端获取数据
+#### 方法1：添加对应接口用于前端页面调用
+controller/api.js 中添加对应方法用于获取服务端数据
 ```js
     module.exports = app => {
         return class ApiController extends app.Controller {
             async wxConfig() {
                 const {ctx, service} = this;
                 const page = ctx.query.page;
-                this.ctx.body = await service.http.request('/rest/api/wechat/js/config?page=' + page);
+                this.ctx.body = await service.http.request('/api/wechat/js/config?page=' + page);
             }
         };
     };
 使用 service.http.request 获取第三方接口数据, request 使用遵循 egg 的 ctx.curl();
 this.ctx.body = await service.http.request(url, {}); 
 ```
-
-### 客户端获取数据
-#### 方法1：添加对应接口用于前端页面调用
-
 router/api.js 添加接口路由
 ```js
 module.exports = app => {
@@ -49,9 +46,10 @@ export default{
 ```
 
 #### 方法2：服务端渲染 Node 层直接获取数据
+在负责 render 的 controller 中 获取数据返回到页面
 ```js
 async Index() {
-    const result = this.service.http.request(url, {});
+    const result = this.service.http.request('/api/wechat/js/config', {});
     await this.ctx.render('index/index.js', result);
 }
 ```
