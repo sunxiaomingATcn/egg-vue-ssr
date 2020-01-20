@@ -20,7 +20,7 @@
 ### 二、客户端获取数据
 
 #### 方法1：服务端渲染 Node 层直接获取数据（推荐）
-在负责 render 的 controller 中 获取数据返回到页面
+app/controller/xxx: 在负责 render 的 controller 中获取数据返回到页面
 ```js
 async Index() {
     const result = this.service.http.request('/api/articleList', {});
@@ -28,7 +28,7 @@ async Index() {
 }
 ```
 #### 方法2：添加对应接口用于前端页面调用
-controller/api.js 中添加对应方法用于获取服务端数据
+app/controller/api.js 中添加对应方法用于获取服务端数据
 ```js
     module.exports = app => {
         return class ApiController extends app.Controller {
@@ -43,7 +43,7 @@ controller/api.js 中添加对应方法用于获取服务端数据
     * this.ctx.body = await service.http.request(url, {}); 
     */
 ```
-router/api.js 添加接口路由
+app/router/api.js 添加接口路由
 ```js
 module.exports = app => {
     app.get('/api/articleList',app.controller.api.articleList);
@@ -53,7 +53,7 @@ module.exports = app => {
 * 只使用 Node 层直接获取数据时上述两个文件可以删除，对应的router.js 接口路由组配置require('./router/api')(app)删掉；
 */
 ```
-vue模板调用接口
+app/web/page/xxx vue模板调用接口
 ```js
 export default{
    mounted(){
