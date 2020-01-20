@@ -18,7 +18,16 @@
 ```
 
 ### 二、客户端获取数据
-#### 方法1：添加对应接口用于前端页面调用
+
+#### 方法1：服务端渲染 Node 层直接获取数据（推荐）
+在负责 render 的 controller 中 获取数据返回到页面
+```js
+async Index() {
+    const result = this.service.http.request('/api/wechat/js/config', {});
+    await this.ctx.render('index/index.js', result);
+}
+```
+#### 方法2：添加对应接口用于前端页面调用
 controller/api.js 中添加对应方法用于获取服务端数据
 ```js
     module.exports = app => {
@@ -50,14 +59,6 @@ export default{
 }
 ```
 
-#### 方法2：服务端渲染 Node 层直接获取数据
-在负责 render 的 controller 中 获取数据返回到页面
-```js
-async Index() {
-    const result = this.service.http.request('/api/wechat/js/config', {});
-    await this.ctx.render('index/index.js', result);
-}
-```
 
 ### 三、package.json 中使用对应命令启动
 ```js
