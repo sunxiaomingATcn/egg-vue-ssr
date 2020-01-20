@@ -1,9 +1,9 @@
 # Egg Vue SSR/CSR
 
-## 基于egg-vue-webpack-boilerplate 骨架增加了 http service
+## 基于egg-vue-webpack-boilerplate 骨架增加了 http service 用于获取第三方服务端数据
 
 
-### 一、config/config.default.js 中添加对应代理， 此种使用适用于对应唯一服务；
+### 一、config/config.default.js 中添加对应代理（暂时只对应一种服务）；
 ```js
   exports.httpProxy = {
     'local':"http://dev1.xxx.com",
