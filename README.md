@@ -1,9 +1,9 @@
 # Egg Vue SSR/CSR
 
-##基于egg-vue-webpack-boilerplate 骨架增加了 http service
+## 基于egg-vue-webpack-boilerplate 骨架增加了 http service
 
 
-###config/config.default.js 中添加对应代理， 此种使用适用于对应唯一服务；
+### config/config.default.js 中添加对应代理， 此种使用适用于对应唯一服务；
 ```js
   exports.httpProxy = {
     'local':"http://dev1.xxx.com",
@@ -32,7 +32,7 @@ this.ctx.body = await service.http.request(url, {});
 ```
 
 ### 客户端获取数据
-####方法1：添加对应接口用于前端页面调用
+#### 方法1：添加对应接口用于前端页面调用
 
 router/api.js 添加接口路由
 ```js
@@ -48,7 +48,7 @@ export default{
 }
 ```
 
-####方法2：服务端渲染 Node 层直接获取数据
+#### 方法2：服务端渲染 Node 层直接获取数据
 ```js
 async Index() {
     const result = this.service.http.request(url, {});
@@ -56,7 +56,7 @@ async Index() {
 }
 ```
 
-###package.json 中使用对应命令启动
+### package.json 中使用对应命令启动
 ```js
     "build:dev1": "cross-env easy clean && easy build test"
     "start:dev1": "egg-scripts start --env=dev1"
