@@ -12,7 +12,8 @@
     ...
   }
 
-httpProxy对象 key 为对应启动环境，value为环境对应接口域名, 注意一定要添加 prod 环境。具体环境配置参考 https://www.yuque.com/easy-team/egg-vue/online
+httpProxy对象 key 为对应启动环境，value为环境对应接口域名, 注意一定要添加 prod 环境。
+具体环境配置参考 https://www.yuque.com/easy-team/egg-vue/online
 ```
 
 ### 二、客户端获取数据
