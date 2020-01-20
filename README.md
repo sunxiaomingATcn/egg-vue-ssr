@@ -12,7 +12,7 @@
     ...
   }
     /**
-    * httpProxy对象 key 为对应启动环境，value为环境对应接口域名, 注意一定要添加 prod 环境。
+    * httpProxy对象中 key 为对应启动环境，value为环境对应接口域名, 注意一定要添加 prod 环境。
     * 具体环境配置参考 https://www.yuque.com/easy-team/egg-vue/online
     */
 ```
@@ -60,7 +60,7 @@ export default{
 ```
 
 
-### 三、package.json 中使用对应命令启动
+### 三、package.json 中添加对应环境参数的（--env）启动命令
 ```js
 "build:dev1": "cross-env easy clean && easy build test"
 "start:dev1": "egg-scripts start --env=dev1"  
