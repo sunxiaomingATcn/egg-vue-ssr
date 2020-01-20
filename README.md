@@ -53,7 +53,7 @@ module.exports = app => {
 * 只使用 Node 层直接获取数据时上述两个文件可以删除，对应的router.js 接口路由组配置require('./router/api')(app)删掉；
 */
 ```
-app/web/page/xxx.vue vue模板调用接口
+app/web/page/xxx.vue  前端调用接口
 ```js
 export default{
    mounted(){
