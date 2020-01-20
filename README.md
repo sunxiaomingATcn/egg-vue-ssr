@@ -61,7 +61,7 @@ async Index() {
  ```
 启动本地环境：
 
-    npm start
+    npm run dev
     
 启动测试环境：
     
