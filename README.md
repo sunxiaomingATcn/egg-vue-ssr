@@ -29,8 +29,11 @@ controller/api.js 中添加对应方法用于获取服务端数据
             }
         };
     };
-使用 service.http.request 获取第三方接口数据, request 使用遵循 egg 的 ctx.curl();
-this.ctx.body = await service.http.request(url, {}); 
+    /**
+    * 使用 service.http.request 获取第三方接口数据, request 使用遵循 egg 的 ctx.curl();
+    * this.ctx.body = await service.http.request(url, {}); 
+    */
+
 ```
 router/api.js 添加接口路由
 ```js
@@ -41,8 +44,9 @@ module.exports = app => {
 vue模板调用接口
 ```js
 export default{
- mounted(){
-    this.$http.get('/api/wxconfig'}
+   mounted(){
+      this.$http.get('/api/wxconfig')
+   }
 }
 ```
 
