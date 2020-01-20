@@ -60,6 +60,7 @@ export default{
       this.$request.get('/api/articleList')
    }
 }
+// $request 为骨架封装的 axios, 在 /app/web/framework/network/request.js
 ```
 
 
