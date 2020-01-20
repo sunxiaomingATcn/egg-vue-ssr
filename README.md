@@ -57,7 +57,7 @@ vue模板调用接口
 ```js
 export default{
    mounted(){
-      this.$request.get('/api/wxconfig')
+      this.$request.get('/api/articleList')
    }
 }
 ```
