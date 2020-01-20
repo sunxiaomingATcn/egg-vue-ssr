@@ -32,10 +32,9 @@ controller/api.js 中添加对应方法用于获取服务端数据
 ```js
     module.exports = app => {
         return class ApiController extends app.Controller {
-            async wxConfig() {
+            async articleList() {
                 const {ctx, service} = this;
-                const page = ctx.query.page;
-                this.ctx.body = await service.http.request('/api/wechat/js/config?page=' + page);
+                this.ctx.body = await service.http.request('/api/articleList?pageNum=1&pageSize=30');
             }
         };
     };
@@ -47,7 +46,8 @@ controller/api.js 中添加对应方法用于获取服务端数据
 router/api.js 添加接口路由
 ```js
 module.exports = app => {
-    app.get('/api/wxconfig',app.controller.api.wxConfig);
+    app.get('/api/articleList',app.controller.api.articleList);
+    ...
 };
 /**
 * 只使用 Node 层直接获取数据时上述两个文件可以删除，对应的router.js 接口路由组配置require('./router/api')(app)删掉；
