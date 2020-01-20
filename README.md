@@ -23,7 +23,7 @@
 在负责 render 的 controller 中 获取数据返回到页面
 ```js
 async Index() {
-    const result = this.service.http.request('/api/wechat/js/config', {});
+    const result = this.service.http.request('/api/articleList', {});
     await this.ctx.render('index/index.js', result);
 }
 ```
