@@ -12,10 +12,10 @@ export default {
       headers['x-csrf-token'] = state.csrf;
       headers.Cookie = `csrfToken=${state.csrf}`;
     }
-    return axios.post(`${state.origin}${url}`, json, { headers });
+    return axios.post(`${state.origin}${url}`, json, { headers }).then(res => res.data);
   },
   get(url, store = {}) {
     const { state = { origin: '' } } = store;
-    return axios.get(`${state.origin}${url}`);
+    return axios.get(`${state.origin}${url}`).then(res => res.data);
   }
 };
