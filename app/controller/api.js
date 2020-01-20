@@ -3,7 +3,7 @@ module.exports = app => {
         async wxConfig() {
             const {ctx, service} = this;
             const page = ctx.query.page;
-            this.ctx.body = await service.base.request('/rest/api/wechat/js/config?page=' + page);
+            this.ctx.body = await service.http.request('/rest/api/wechat/js/config?page=' + page);
         }
     };
 };
