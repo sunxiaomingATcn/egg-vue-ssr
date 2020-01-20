@@ -50,7 +50,7 @@ module.exports = app => {
     app.get('/api/wxconfig',app.controller.api.wxConfig);
 };
 /**
-* 只使用第一种方式时，上述两个文件可以删除，对应的router.js 接口路由组配置require('./router/api')(app)删掉；
+* 只使用 Node 层直接获取数据时上述两个文件可以删除，对应的router.js 接口路由组配置require('./router/api')(app)删掉；
 */
 ```
 vue模板调用接口
