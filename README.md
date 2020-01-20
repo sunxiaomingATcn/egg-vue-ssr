@@ -20,7 +20,7 @@
 ### 二、客户端获取数据
 
 #### 方法1：服务端渲染 Node 层直接获取数据（推荐）
-app/controller/xxx: 在负责 render 的 controller 中获取数据返回到页面
+app/controller/xxx：在负责 render 的 controller 中获取数据返回到页面
 ```js
 async Index() {
     const result = this.service.http.request('/api/articleList', {});
