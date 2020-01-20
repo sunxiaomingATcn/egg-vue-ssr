@@ -69,13 +69,13 @@ export default{
 
     npm run dev
     
-启动测试环境：
+启动服务器环境-测试环境：
     
     npm run build:dev1
     
     npm run start:dev1
 
-启动正式环境：
+启动服务器环境-正式环境：
     
     npm run build
     
